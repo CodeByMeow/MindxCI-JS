@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.nav-bar > span, .nav-menu > span {
+    width: 100px;
+    height: 30px;
+    background: #deb887;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    margin: 0px 5px;  
+    line-height: 30px;
+}
+
+.nav-bar > span:hover, .nav-menu > span:hover{
+    background: #32cd32;
+    color: #fff;
+}
+
+.nav-menu > span {
+    display: block;
+}
