@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Lesstion 1</title>
-  </head>
-  <body>
-    <nav class="nav-bar">
-    </nav>
-  </body>
-  <script src="script.js" defer></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Login Page</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="background-img">
+        </div>
+        <div class="login-form">
+            <h1>Login</h1>
+            <form action="" method="post">
+                <input type="text" placeholder="Username">
+                <input type="password" placeholder="Password">
+                <input type="checkbox" id="remember" value="IsRememberMe">
+                <label for="remember">Remember me</label>
+                <input type="button" value="Login" class="btn-login">
+                <p class="forgot-pwd"><a href="#">Forgot password?</a></p>
+            </form>
+            <div class="sign-up">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>

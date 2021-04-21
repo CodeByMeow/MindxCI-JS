@@ -1,56 +1,104 @@
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 :root {
-  --primary-color: #000;
-  --secondary-color: #c5aa6a;
+    --primary-color: #2B58AC;
+    --secondary-color: #9C9C9C;
+    --font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.nav-bar > span,
-.dropdown-content > span {
-  width: 100px;
-  height: 30px;
-  background: var(--primary-color);
-  color: #999;
-  /* padding: 10px 20px; */
-  text-decoration: none;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  line-height: 30px;
-  cursor: pointer;
-  text-align: center;
+.container {
+    width: 1150px;
+    height: 700px;
+    background: #fff;
+    white-space: nowrap;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    font-family: var(--font-family);
 }
 
-.nav-bar > span {
-  display: inline-block;
+.background-img, .login-form {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: inline-block;
 }
 
-.nav-bar > span:hover,
-.dropdown-content > span:hover {
-  background: var(--secondary-color);
-  color: #fff;
+.background-img {
+    background: url("background.jpg") no-repeat left top;
 }
 
-.nav-bar > span:hover .dropdown-content {
-  display: block;
+.login-form {
+    right: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+.background-img img {
+    width: 100%;
+    height: 100%;
 }
 
-.dropdown-content > span {
-  display: block;
+.login-form h1 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.login-form input:not([type="checkbox"]) {
+    display: block;
+    margin: 20px 0;
+    width: 100%;
+    height: 60px;
+    outline: none;
+    border: none;
+    box-shadow: 1px 5px 15px rgba(0,0,0, 0.1);
+    line-height: 1.3rem;
+    font-size: 1.45rem;
+    padding: 0 10px;
+}
+
+.login-form .forgot-pwd {
+    text-align: right;
+}
+
+.login-form .forgot-pwd a{
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+.login-form label {
+    vertical-align: top;
+    margin-left: 10px;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+}
+
+.login-form .btn-login {
+    background: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+}
+
+.login-form .sign-up {
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.login-form .sign-up a {
+    color: var(--secondary-color);
 }
