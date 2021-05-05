@@ -4,12 +4,13 @@ import { images } from "./weather-images.js";
 const ImageDir = "./src/weather-images";
 const hamburger = document.querySelector("#hamburger");
 const overlay = document.querySelector(".overlay");
-// const locationView = document.querySelector(".location-view");
-// const locationDays = document.querySelector(".location-days");
 const mainCotent = document.querySelector(".location");
 const currentLocation = document.querySelector(".current-location");
 const searchBtn = document.querySelector("#search-input");
 const formSearch = document.querySelector(".location-form");
+const currentLocationDesk = document.querySelector(".current-location-desk");
+const searchBtnDesk = document.querySelector(".search-input");
+const formSearchDesk = document.querySelector(".location-form-desk");
 
 document.addEventListener('DOMContentLoaded', async () => {
     const html = await renderHTML();
@@ -17,23 +18,34 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 hamburger.addEventListener("click", () => {
+    searchBtn.value = '';
     hamburger.classList.toggle("open");
     overlay.classList.toggle("is-open");
 });
 
 currentLocation.addEventListener('click', async () => {
-    searchBtn.value = `Hà nội`;
-    await handingSubmit();
+    searchBtn.value = `Ho Chi Minh`;
+    await handingSubmit(searchBtn.value);
 });
 
 
 formSearch.addEventListener('submit', async (e) => {
     e.preventDefault();
-    await handingSubmit();
+    await handingSubmit(searchBtn.value);
 });
 
-async function handingSubmit() {
-    api.setLocation(searchBtn.value);
+formSearchDesk.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    await handingSubmit(searchBtnDesk.value );
+});
+
+currentLocationDesk.addEventListener('click', async () => {
+    searchBtnDesk.value = `Ho Chi Minh`;
+    await handingSubmit(searchBtnDesk.value);
+});
+
+async function handingSubmit(location = 'Hồ Chí Minh') {
+    api.setLocation(location);
     const html = await renderHTML();
     mainCotent.insertAdjacentHTML('beforeend', html);
     hamburger.classList.toggle("open");
@@ -89,6 +101,7 @@ function getDayByTime(time) {
 
 async function loadWeatherLocation() {
     const weatherInfo = await api.getSingleDayWeather();
+    if (weatherInfo.cod >= 400) return weatherInfo.message;
     let result = [];
     result.push(weatherInfo[0]);
     for (let i = 1; i < weatherInfo.length; i++) {
@@ -112,17 +125,19 @@ function roundTemp(temp) {
 }
 
 async function renderHTML() {
-    const data = await loadWeatherLocation();
-    const view = (await renderLocationView(data[0], data[1])).toString();
-    data.shift(); // First value is location info.
+    const loader = await loadWeatherLocation();
+    if (typeof loader == 'string') return loader;
+    const [info, ...data ]= loader;
+    const view = (await renderLocationView(info, data[0])).toString();
     const items = await renderLocationDays(data);
     const html = `<div class="location-view">${view}</div><div class="location-days">${items}</div>`;
     return html;
 }
 
 async function renderLocationView(weather_view, weather_info) {
-    return `<h3>Vị trí hiện tại</h3>
+    return `<div class="weather-text"/><h3>Vị trí hiện tại</h3>
                 <h1>${weather_view.name}, ${weather_view.country}</h1>
+                </div>
                 <div class="weather-detail">
                     <div class="weather-image">
                         <img src="${weather_info.images}" alt="${weather_info.description}">

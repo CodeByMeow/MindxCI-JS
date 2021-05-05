@@ -25,6 +25,7 @@ body {
 
 .container {
   padding: 8px 24px;
+  min-width: 375px;
 }
 
 body {
@@ -33,9 +34,7 @@ body {
 
 header {
   position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  
   width: 100%;
   height: 64px;
   background: #fff;
@@ -43,13 +42,19 @@ header {
   z-index: 3;
 }
 
-header .hamburger {
+header > .mobile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header  .hamburger {
   display: inline-block;
   cursor: pointer;
   height: 24px;
 }
 
-header .hamburger span {
+header  .hamburger span {
   display: block;
   background-color: #000;
   width: 24px;
@@ -60,8 +65,8 @@ header .hamburger span {
   transform: translateY(-50%);
 }
 
-header .hamburger span::before,
-header .hamburger span::after {
+header  .hamburger span::before,
+header  .hamburger span::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -71,38 +76,38 @@ header .hamburger span::after {
   visibility: visible;
 }
 
-header .hamburger span::before {
+header  .hamburger span::before {
   bottom: 6px;
   transition: bottom 0.2s ease-in-out 0.2s, transform 0.2s;
 }
 
-header .hamburger span::after {
+header  .hamburger span::after {
   top: 6px;
   transition: top 0.2s ease-in-out 0.2s, transform 0.2s;
 }
 
-header .hamburger.open span {
+header  .hamburger.open span {
   visibility: hidden;
   transition: visibility 0.2s;
 }
 
-header .hamburger.open span::before {
+header  .hamburger.open span::before {
   bottom: 0px;
   transform: rotateZ(45deg);
   transition: bottom 0.2s, transform 0.2s ease-in-out 0.2s;
 }
 
-header .hamburger.open span::after {
+header  .hamburger.open span::after {
   top: 0px;
   transform: rotateZ(-45deg);
   transition: top 0.2s, transform 0.2s ease-in-out 0.2s;
 }
 
-header .logo {
+header  .logo {
   display: inline-block;
 }
 
-header .logo img {
+header  .logo img {
   width: 100px;
 }
 
@@ -242,4 +247,81 @@ section.location .location-days-item {
 
 .overlay .location-form .current-location .fa {
   margin-right: 8px;
+}
+
+.desktop {
+  display: none;
+}
+
+/* desktop styles */
+
+@media (min-width: 768px) {
+  header > .mobile {
+    display: none;
+  }
+
+  header .desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  header .desktop .location-form-desk {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  header .desktop .location-form-desk .current-location-desk {
+    width: 48px;
+    height: 48px;
+    background: var(--primary);
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    border-radius: 8px;
+  }
+
+  header .desktop .location-form-desk .search-input {
+    height: 48px;
+    background: var(--primary);
+    line-height: 1.3;
+    border: 0 none;
+    outline: 0 none;
+    margin-left: 8px;
+    padding: 16px 8px;
+    color: #729beb;
+  }
+
+  section.location > .location-view  {
+    position: relative;
+  }
+
+  section.location > .location-view .weather-text {
+    display: inline-flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    right: 16px;  
+  }
+
+  section.location > .location-view  .weather-detail {
+    height: 100%;
+  }
+
+  section.location > .location-view .weather-info, section.location > .location-view .weather-image{
+    display: inline-block;
+  }
+
+  section.location .location-days-item {
+    width: auto;
+  }
+
+  .overlay {
+    display: none;
+  }
 }
