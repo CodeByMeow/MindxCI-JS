@@ -40,6 +40,7 @@ header {
   height: 64px;
   background: #fff;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  z-index: 3;
 }
 
 header .hamburger {
@@ -133,6 +134,10 @@ section.location .location-view h3 {
   color: var(--secondary);
 }
 
+section.location .location-view p {
+  text-transform: capitalize;
+}
+
 section.location .location-view .weather-img img {
   max-width: 128px;
 }
@@ -152,10 +157,12 @@ section.location .location-view .weather-info p {
 }
 
 section.location .location-days {
-  margin-top: 16px;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  padding: 16px 0px;
 }
 
 section.location .location-days-item {
@@ -163,6 +170,8 @@ section.location .location-days-item {
   border-radius: 8px;
   width: 48%;
   text-align: center;
+  margin-top: 16px;
+  padding: 8px;
 }
 
 .overlay {

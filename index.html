@@ -17,48 +17,19 @@
             <span></span>
         </div>
         <div class="logo">
-            <img src="src/Logo.png" alt="mindx-logo">
+            <img src="./src/Logo.png" alt="mindx-logo">
         </div>
     </header>
     <main class="container">
-        <section class="location">
-            <div class="location-view">
-                <h3>Current Location</h3>
-                <h1>Ho Chi Minh City, Vietnam</h1>
-                <div class="weather-detail">
-                    <div class="weather-image">
-                        <img src="src/weather-images/day_rain_thunder.png" alt="mostly sunny">
-                    </div>
-                    <div class="weather-info">
-                        <h4>26 &deg;C</h4>
-                        <p>Mostly Sunny</p>
-                        <p>Fell like 28&deg;C</p>
-                    </div>
-                </div>
-            </div>
-            <div class="location-days">
-                <div class="location-days-item">
-                    <h4>Mon</h4>
-                    <img src="/src/weather-images/day_rain.png" alt="day sleet">
-                    <p>26 &deg;C</p>
-                </div>
-                <div class="location-days-item">
-                    <h4>Mon</h4>
-                    <img src="/src/weather-images/day_rain.png" alt="day sleet">
-                    <p>26 &deg;C</p>
-                </div>
-            </div>
-        </section>
+        <section class="location"></section>
     </main>
     <div class="overlay">
         <form class="location-form">
-            <input type="text" placeholder="Ex: Hochiminh City">
-            <div class="current-location"><i class="fa fa-location-arrow" aria-hidden="true"></i>Current Location</div>
+            <input type="text" placeholder="Thành phố Hồ Chí Minh" id="search-input">
+            <div class="current-location"><i class="fa fa-location-arrow" aria-hidden="true"></i>Ví trí hiện tại</div>
         </form>
     </div>
 </body>
-<script type="module" src="script.js"></script>
-<!-- <script src="weather-images.js"></script> -->
-<!-- <script type="module" src="weather-api.js"></script> -->
+<script type="module" src="script.js" defer></script>
 
 </html>

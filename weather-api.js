@@ -15,9 +15,24 @@ function setLocation(location) {
     return params.q =location;
 }
 
-async function getWeather5Day() {
-    const apiUrl = createApiUrl(base_url, params);
-    return await (await (fetch(apiUrl))).json();
+function getLocation() {
+    return params.q;
 }
 
-export {getWeather5Day, setLocation}
+async function getWeather5Day() {
+    const apiUrl = createApiUrl(base_url, params);
+    return await (await fetch(apiUrl)).json();
+}
+
+async function getSingleDayWeather() {
+    const data = [];
+    const weather = await getWeather5Day();
+    data.push(weather.city);
+    const days = weather.list;
+    for ( let i = 0; i < days.length; i+=8 ) {
+        data.push(days[i]);
+    }
+    return data;
+}
+
+export {getSingleDayWeather, setLocation, getLocation}
